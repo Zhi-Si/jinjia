@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>金价</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="baidu-site-verification" content="1CeBZTfGpT" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" href="images/logo.ico" type="images/x-icon">
+    <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="js/graphcode.js"></script>
+    <script type="text/javascript" src="js/business.js"></script>
+    <script type="text/javascript" src="js/jsencrypt.min.js"></script>
+    <script>
+      var html = document.documentElement;
+      var oHtmlWidth = html.getBoundingClientRect().width;
+      html.style.fontSize=oHtmlWidth/16 + 'px';
+    </script>
+	<style>
+		body{
+			display:flex;
+			flex-direction:column;
+			height:100%;
+		}
+		.footer-bottom{
+			height:40px;
+			width: 100%;
+			position: fixed;
+			bottom:0;
+			left:0;
+			z-index: 99999;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<div>
+			黄金
+			<div id="huangjin"></div>
+	 </div>
+	 <div>
+		白银
+		<div id="baiyin"></div>
+ </div>
+ <div>
+	钯金
+	<div id="bajin"></div>
+</div>
+<div>
+	铂金
+	<div id="bojin"></div>
+</div>
+
+	</div>
+	<div onclick="subSmsCode()">获取</div>
+	
+	
+	
+	
+
+
+
+<script type="text/javascript">
+function subSmsCode() {
+	$.ajax({
+	    type: "get",
+	    data:{
+	        appkey:'08ca6aae47654d73'
+	    },
+	    url: "https://api.jisuapi.com/gold/shgold",
+		//url: "http://192.168.2.188:8082/qiaoge/common/hylGwCheckSmsCode",
+	    dataType: "jsonp",
+	    success: function(data){
+				document.getElementById('huangjin').innerHTML=data.result[0].price
+	    }
+	});
+	$.ajax({
+		type: "get",
+		data:{
+				appkey:'08ca6aae47654d73'
+		},
+		url: "https://api.jisuapi.com/silver/shgold",
+	//url: "http://192.168.2.188:8082/qiaoge/common/hylGwCheckSmsCode",
+		dataType: "jsonp",
+		success: function(data){
+				console.log(data)
+		}
+});
+	
+$.ajax({
+	type: "get",
+	data:{
+			appkey:'08ca6aae47654d73'
+	},
+	url: "https://api.jisuapi.com/gold/london",
+//url: "http://192.168.2.188:8082/qiaoge/common/hylGwCheckSmsCode",
+	dataType: "jsonp",
+	success: function(data){
+			console.log(data)
+	}
+});
+}
+
+</script>
+
+
+<script>
+  /*  var swiper = new Swiper('.index-swiper .swiper-container', {
+        autoplay: {
+            delay: 6000 //1秒切换一次
+        },
+        loop : true,
+        slidesPerView: 1,
+        spaceBetween: 0,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+    });
+     
+ */
+</script>
+
+</body>
+</html>
+
